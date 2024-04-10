@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}DevineStokes - Home{% endblock %}
+
+{% block content %}
+<div id="carouselExampleCaptions" class="carousel slide">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active" style="height: 576px; object-fit: cover;">
+            <img src="https://images.fineartamerica.com/images-medium-large-5/peacocks-neeraj-kumar-jha.jpg"
+                class="d-block w-100" alt="...">
+           
+        </div>
+        <div class="carousel-item" style="height: 576px; object-fit: cover;">
+            <img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/deer-birds-and-fishes-madhubani-painting-kiruthika-s.jpg"
+                class="d-block w-100" alt="...">
+           
+        </div>
+        <div class="carousel-item" style="height: 576px; object-fit: cover;">
+            <img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/madhubani-vineeth-pr.jpg"
+                class="d-block w-100" alt="...">
+           
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-4 mt-5">
+        {% for p in product_list %}
+        <div class="col">
+            <div class="card">
+                <img src="{{ p.image.url }}" class="card-img-top img-fluid" alt="Product Image"
+                    style="object-fit: fill; height: 300px;">
+
+                <div class="card-body border border-bottom-1">
+                    <h4>
+                        <a href="{% url 'ecomm:productdetails' p.slug %}">{{ p.title }}</a>
+        
+                        </h4>
+                    <p class="card-text">Price: <strike> Rs. {{ p.marked_price }}</strike> Rs.{{ p.selling_price }}</p>
+                    <a href="{% url 'ecomm:addtocart' p.id %}" class="btn btn-success">Add To Cart</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
