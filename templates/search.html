@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}DevineStokes - Search{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Search Results for, <span class="text-success"> "{{request.GET.keyword}}"</span></h3>
+            <hr>
+            {% for result in results %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="{{result.image.url}}" alt="Loading..." style="width: 200px;">
+                    </div>
+                    <div class="col md-8">
+                        <h4><a href="{% url 'ecomm:productdetails' result.slug  %}">{{result.title}}</a></h4>
+                        <p>{{result.description|truncatewords:20}}</p>
+                        <p><span class="text-success fw-semibold">Return Pocily:</span> {{result.return_policy}}</p>
+                        <a class="btn btn-success mb-3" href="{% url 'ecomm:addtocart' result.id %}">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+{% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

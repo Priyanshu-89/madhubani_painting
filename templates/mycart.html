@@ -47,13 +47,13 @@
                         </th>
                         {% endif %}
                         <th>
-                            <a href="/all-products/" class="btn btn-primary fs-6">More Shopping</a>
+                            <a href="/all-products/" class="btn btn-success fs-6">More Shopping</a>
                         </th>
                     </tr>
                     <tr>
                         {% if cart.cartproduct_set.all %}
                        <th>
-                        <a class="btn btn-info" href="{% url 'ecomm:checkout' %}">Checkout</a>
+                        <a class="btn btn-success" href="{% url 'ecomm:checkout' %}">Checkout</a>
                        </th> 
                     </tr>
                     {% endif %}
